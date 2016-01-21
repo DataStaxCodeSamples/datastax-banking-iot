@@ -1,9 +1,10 @@
-Transaction Search Demo
+Banking-IoT
 ========================
+See here for use case and requirments - https://gist.github.com/PatrickCallaghan/68ae4aa415982e383188
+
+A bank wants to help locate and tag all their expenses/transactions in their bank account to help them categorise their spending. The users will be able to tag any expense/transaction to allow for efficient retrieval and reporting. There will be 10 millions customers with on average 500 transactions a year. Some business customers may have up to 10,000 transactions a year. The client wants the tagged items to show up in searches in less than a second to give users a seamless experience between devices.
 
 This requires DataStax Enterprise running in Solr mode.
-
-This demo shows 3 ways to search transactions in a users account. In this demo we will presume that users can enter notes for each transaction on their account and then they will want to search by some or all of these notes.
 
 To create the schema, run the following
 
@@ -27,20 +28,20 @@ For the latest transaction table we can run the following types of queries
 ```
 use datastax_banking_iot;
 
-select * from latest_transactions where cc_no = '1234123412341234';
+select * from latest_transactions where cc_no = '1';
 
-select * from latest_transactions where cc_no = '1234123412341234' and transaction_time > '2015-12-31';
+select * from latest_transactions where cc_no = '1' and transaction_time > '2015-12-31';
 
-select * from latest_transactions where cc_no = '1234123412341234' and transaction_time > '2015-12-31' and transaction_time < '2016-01-27';
+select * from latest_transactions where cc_no = '1' and transaction_time > '2015-12-31' and transaction_time < '2016-01-27';
 ```
 For the (historic) transaction table we need to add the year into our queries.
 
 ```
-select * from transactions where cc_no = '1234123412341234' and year=2016;
+select * from transactions where cc_no = '1' and year=2016;
 
-select * from transactions where cc_no = '1234123412341234' and year = 2016 and transaction_time > '2015-12-31';
+select * from transactions where cc_no = '1' and year = 2016 and transaction_time > '2015-12-31';
 
-select * from transactions where cc_no = '1234123412341234' and year = 2016 and transaction_time > '2015-12-31' and transaction_time < '2016-01-27';
+select * from transactions where cc_no = '1' and year = 2016 and transaction_time > '2015-12-31' and transaction_time < '2016-01-27';
 ```
 Using the solr_query
 
