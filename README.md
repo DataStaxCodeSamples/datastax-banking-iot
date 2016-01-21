@@ -60,7 +60,7 @@ select * from latest_transactions where solr_query = '{"q":"cc_no:1", "fq":"tags
 
 To run the requests run the following 
 	
-	mvn clean compile exec:java -Dexec.mainClass="com.datastax.creditcard.RunRequests" -DcontactPoints=localhost
+	mvn clean compile exec:java -Dexec.mainClass="com.datastax.banking.RunRequests" -DcontactPoints=localhost
 
 To change the no of requests and no of credit cards add the following 
 

@@ -1,0 +1,38 @@
+
+### DML ###
+
+# Keyspace Name
+keyspace: stresscql
+
+# The CQL for creating a keyspace (optional if it already exists)
+keyspace_definition: |
+  CREATE KEYSPACE stresscql WITH replication = {'class': 'SimpleStrategy', 'replication_factor': 3};
+# Table name
+table: latest_transactions
+
+# The CQL for creating a table you wish to stress (optional if it already exists)
+table_definition: |
+ create table if not exists latest_transactions(cc_no text,transaction_time timestamp,transaction_id text,user_id text,location text,merchant text,amount double,status text,notes text,tags set<text>,PRIMARY KEY (cc_no, transaction_time)) WITH CLUSTERING ORDER BY (transaction_time desc) 
+
+### Column Distribution Specifications ###
+columnspec:
+  - name: cc_no
+    size: fixed(16)       #credit card nos approx 16 
+    population: uniform(1..1M)  #1M possible userid to pick from
+
+### Batch Ratio Distribution Specifications ###
+insert:
+  partitions: fixed(1)            # Our partition key is the cc_no so only insert one per batch
+
+  select:    fixed(1)/200        # We have 100 transactions per key
+
+  batchtype: UNLOGGED             # Unlogged batches
+
+
+#
+# A list of queries you wish to run against the schema
+#
+queries:
+   getall:
+      cql: select * from latest_transactions where cc_no = ? 
+      fields: samerow
