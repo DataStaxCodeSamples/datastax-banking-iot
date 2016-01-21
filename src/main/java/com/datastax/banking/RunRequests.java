@@ -83,7 +83,7 @@ public class RunRequests {
 		
 		ThreadUtils.shutdown(tasks, executor);
 		timer.end();
-		logger.info("CQL Query took " + timer.getTimeTakenMillis() + " ms for " +noOfThreads+ "requests. Avg : " + cqlService.getTimerAvg() + "ms per lookup");
+		logger.info("CQL Query took " + timer.getTimeTakenMillis() + " ms for " +noOfRequests+ "requests. Avg : " + cqlService.getTimerAvg() + "ms per lookup");
 		System.exit(0);
 
 	}
