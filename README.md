@@ -8,11 +8,11 @@ This requires DataStax Enterprise running in Solr mode.
 
 To create the schema, run the following
 
-	mvn clean compile exec:java -Dexec.mainClass="com.datastax.demo.SchemaSetup"
+	mvn clean compile exec:java -Dexec.mainClass="com.datastax.demo.SchemaSetup" -DcontactPoints=localhost
 	
 To create some transactions, run the following 
 	
-	mvn clean compile exec:java -Dexec.mainClass="com.datastax.creditcard.Main" 
+	mvn clean compile exec:java -Dexec.mainClass="com.datastax.creditcard.Main"  -DcontactPoints=localhost
 
 You can the following to change the default no of transactions and credit cards 
 	
@@ -58,16 +58,13 @@ Gell all the transaction for credit card '1' that have a tag of Work and are wit
 select * from latest_transactions where solr_query = '{"q":"cc_no:1", "fq":"tags:Work", "fq":"transaction_time:[NOW-30DAY TO *]"}' limit  1000;
 ```
 
-	
 To run the requests run the following 
 	
-	mvn clean compile exec:java -Dexec.mainClass="com.datastax.creditcard.RunRequests"
+	mvn clean compile exec:java -Dexec.mainClass="com.datastax.creditcard.RunRequests" -DcontactPoints=localhost
 
 To change the no of requests add the following
 
-	-DnoOfRequests=100000 -DnoOfCreditCards=1000000	
-	
-
+	-DnoOfRequests=100000
 	
 To remove the tables and the schema, run the following.
 
