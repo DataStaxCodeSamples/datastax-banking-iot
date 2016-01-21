@@ -30,7 +30,7 @@ public class RunRequests {
 
 		String contactPointsStr = PropertyHelper.getProperty("contactPoints", "localhost");
 		String noOfCreditCardsStr = PropertyHelper.getProperty("noOfCreditCards", "1000000");
-		String noOfRequestsStr = PropertyHelper.getProperty("noOfRequests", "1000");
+		String noOfRequestsStr = PropertyHelper.getProperty("noOfRequests", "10000");
 
 		TransactionDao dao = new TransactionDao(contactPointsStr.split(","));
 		BlockingQueue<Transaction> queue = new ArrayBlockingQueue<Transaction>(1000);
@@ -83,7 +83,7 @@ public class RunRequests {
 		
 		ThreadUtils.shutdown(tasks, executor);
 		timer.end();
-		logger.info("CQL Query took " + timer.getTimeTakenMillis() + " ms. Avg : " + cqlService.getTimerAvg() + "ms per lookup");
+		logger.info("CQL Query took " + timer.getTimeTakenMillis() + " ms for " +noOfThreads+ "requests. Avg : " + cqlService.getTimerAvg() + "ms per lookup");
 		System.exit(0);
 
 	}
