@@ -62,9 +62,9 @@ To run the requests run the following
 	
 	mvn clean compile exec:java -Dexec.mainClass="com.datastax.creditcard.RunRequests" -DcontactPoints=localhost
 
-To change the no of requests add the following
+To change the no of requests and no of credit cards add the following 
 
-	-DnoOfRequests=100000
+	-DnoOfRequests=100000  -DnoOfCreditCards=1000000
 	
 To remove the tables and the schema, run the following.
 
