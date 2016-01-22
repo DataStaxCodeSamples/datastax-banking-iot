@@ -14,7 +14,7 @@ To create some transactions, run the following
 	
 	mvn clean compile exec:java -Dexec.mainClass="com.datastax.creditcard.Main"  -DcontactPoints=localhost
 
-You can the following to change the default no of transactions and credit cards 
+You can use the following parameters to change the default no of transactions and credit cards 
 	
 	-DnoOfTransactions=10000000 -DnoOfCreditCards=1000000
 	
