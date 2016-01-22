@@ -61,7 +61,10 @@ To use the webservice, start the web server using
 ```
 mvn jetty:run
 ```
-Open a browser and use a url like http://{servername}:8080/datastax-banking-iot/rest/gettransactions/{creditcardno}/{from}/{to}
+Open a browser and use a url like 
+```
+http://{servername}:8080/datastax-banking-iot/rest/gettransactions/{creditcardno}/{from}/{to}
+```
 Note : the from and to are dates in the format yyyyMMdd hh:mm:ss - eg 
 ```
 http://localhost:8080/datastax-banking-iot/rest/gettransactions/1/20150101/20160102/
