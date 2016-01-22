@@ -40,7 +40,7 @@ public class RunRequests {
 		int noOfCreditCards = Integer.parseInt(noOfCreditCardsStr);
 		int noOfRequests = Integer.parseInt(noOfRequestsStr);
 
-		SearchService cqlService = new SearchServiceImpl(dao);
+		SearchService cqlService = new SearchServiceImpl();
 		List<KillableRunner> tasks = new ArrayList<>();
 
 		for (int i = 0; i < noOfThreads; i++) {
@@ -83,7 +83,7 @@ public class RunRequests {
 		
 		ThreadUtils.shutdown(tasks, executor);
 		timer.end();
-		logger.info("CQL Query took " + timer.getTimeTakenMillis() + " ms for " +noOfRequests+ "requests. Avg : " + cqlService.getTimerAvg() + "ms per lookup");
+		logger.info("CQL Query took " + timer.getTimeTakenMillis() + " ms for " +noOfRequests+ " requests. Avg : " + cqlService.getTimerAvg() + "ms per lookup");
 		System.exit(0);
 
 	}

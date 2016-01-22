@@ -8,6 +8,7 @@ import org.joda.time.DateTime;
 
 import com.datastax.banking.dao.TransactionDao;
 import com.datastax.banking.model.Transaction;
+import com.datastax.demo.utils.PropertyHelper;
 import com.datastax.demo.utils.Timer;
 
 public class SearchServiceImpl implements SearchService {
@@ -16,8 +17,9 @@ public class SearchServiceImpl implements SearchService {
 	private long timerSum = 0;
 	private AtomicLong timerCount= new AtomicLong();
 
-	public SearchServiceImpl(TransactionDao dao) {
-		this.dao = dao;
+	public SearchServiceImpl() {		
+		String contactPointsStr = PropertyHelper.getProperty("contactPoints", "localhost");
+		this.dao = new TransactionDao(contactPointsStr.split(","));
 	}	
 
 	@Override

@@ -57,6 +57,15 @@ Gell all the transaction for credit card '1' that have a tag of Work and are wit
 ```
 select * from latest_transactions where solr_query = '{"q":"cc_no:1", "fq":"tags:Work", "fq":"transaction_time:[NOW-30DAY TO *]"}' limit  1000;
 ```
+To use the webservice, start the web server using 
+```
+mvn jetty:run
+```
+Open a browser and use a url like http://{servername}:8080/datastax-banking-iot/rest/gettransactions/{creditcardno}/{from}/{to}
+Note : the from and to are dates in the format yyyyMMdd hh:mm:ss - eg 
+```
+http://localhost:8080/datastax-banking-iot/rest/gettransactions/1/20150101/20160102/
+```
 
 To run the requests run the following 
 	
