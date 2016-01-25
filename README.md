@@ -12,7 +12,7 @@ To create the schema, run the following
 	
 To create some transactions, run the following 
 	
-	mvn clean compile exec:java -Dexec.mainClass="com.datastax.creditcard.Main"  -DcontactPoints=localhost
+	mvn clean compile exec:java -Dexec.mainClass="com.datastax.banking.Main"  -DcontactPoints=localhost
 
 You can use the following parameters to change the default no of transactions and credit cards 
 	
