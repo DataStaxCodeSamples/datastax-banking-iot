@@ -35,7 +35,7 @@ public class SearchServiceImpl implements SearchService {
 
 		//If the to and from dates are within the 3 months we can use the latest transactions table as it should be faster.		
 		if (from.isAfter(DateTime.now().minusMonths(3))){
-			transactions = dao.getLatestTransactionsForCCNoTagsAndDate(ccNo, search, from, to);
+			transactions = dao.getTransactionsForCCNoTagsAndDate(ccNo, search, from, to);
 		}else{
 			transactions = dao.getLatestTransactionsForCCNoTagsAndDate(ccNo, search, from, to);
 		}
@@ -45,5 +45,4 @@ public class SearchServiceImpl implements SearchService {
 		timerCount.incrementAndGet();
 		return transactions;
 	}
-
 }
