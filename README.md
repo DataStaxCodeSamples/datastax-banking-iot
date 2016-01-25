@@ -37,7 +37,7 @@ select * from latest_transactions where cc_no = '1' and transaction_time > '2015
 For the (historic) transaction table we need to add the year into our queries.
 
 ```
-select * from transactions where cc_no = '1' and year=2016;
+select * from transactions where cc_no = '1' and year = 2016;
 
 select * from transactions where cc_no = '1' and year = 2016 and transaction_time > '2015-12-31';
 
