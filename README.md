@@ -28,11 +28,11 @@ For the latest transaction table we can run the following types of queries
 ```
 use datastax_banking_iot;
 
-select * from latest_transactions where cc_no = '1';
+select * from latest_transactions where cc_no = '1234123412341234';
 
-select * from latest_transactions where cc_no = '1' and transaction_time > '2015-12-31';
+select * from latest_transactions where cc_no = '1234123412341234' and transaction_time > '2015-12-31';
 
-select * from latest_transactions where cc_no = '1' and transaction_time > '2015-12-31' and transaction_time < '2016-01-27';
+select * from latest_transactions where cc_no = '1234123412341234' and transaction_time > '2015-12-31' and transaction_time < '2016-01-27';
 ```
 For the (historic) transaction table we need to add the year into our queries.
 
